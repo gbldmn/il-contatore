@@ -3,3 +3,34 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
+body {
+display: flex;
+flex-direction: column;
+height: 100vh;
+align-items: center;
+justify-content: center;
+}
+.counter {
+width: 200px;
+height: 200px;
+border: 2px solid red;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.bottoni {
+width: 300px;
+height: 100px;
+border: 2px solid red;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.bottoni button {
+padding: 10px;
+font-weight: bolder;
+border-radius: 10px;
+font-size: 15px;
+margin-left: 10px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
