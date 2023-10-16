@@ -13,16 +13,25 @@ function avvia(){
     if (!intervalId) {
         intervalId = setInterval(function() {
             i++; 
-            motore.innerHTML = `<h1>${i}</h1>`;
+            aggiungiBlocchetto();
+            motore.innerHTML = `<div class="dd1 counter1">
+                                    <h1 class="boer">${i}</h1>
+                                    <div class="blocchetto"></div>
+                                </div>`;
         }, 1000); 
     }
+}
+function aggiungiBlocchetto() {
+    const blocchetto = document.querySelector('.blocchetto');
+    const nuovoBlocchetto = blocchetto.cloneNode(true);
+    motore.appendChild(nuovoBlocchetto);
 }
 function velocizza() {
     if (intervalId) {
         clearInterval(intervalId);
         intervalId = setInterval(function () {
                         
-            motore.innerHTML = `<h1>${i}</h1>`;
+            motore.innerHTML = `<h1 class="boer">${i}</h1>`;
             if (rallentaId == false){
             i--;
             }else {
@@ -38,7 +47,7 @@ function rallenta() {
         clearInterval(intervalId); 
         intervalId = setInterval(function () {
             
-            motore.innerHTML = `<h1>${i}</h1>`;
+            motore.innerHTML = `<h1 class="boer">${i}</h1>`;
             if (rallentaId == false){
             i--;
             }else {
@@ -76,7 +85,7 @@ function inverti(){
             i++;
             rallentaId = true
         }
-        motore.innerHTML = `<h1>${i}</h1>`;
+        motore.innerHTML = `<h1 class="boer">${i}</h1>`;
     },1000);
     conteggioCrescente = !conteggioCrescente;
 }
@@ -95,7 +104,7 @@ function reset(){
     clearInterval(intervalId);
     intervalId = null;
     i = 0;
-    motore.innerHTML = `<h1>${i}</h1>`;
+    motore.innerHTML = `<h1 class="boer">${i}</h1>`;
     }
 }
 
@@ -104,7 +113,7 @@ function data(){
     const giorno = oggi.getDate();
     const mese = oggi.getMonth() + 1;
     const anno = oggi.getFullYear();
-    motore.innerHTML = `${giorno}/ ${mese}/ ${anno} `;
+    motore.innerHTML = `<h1 class="boer">${giorno}/ ${mese}/ ${anno}</h1> `;
     clearInterval(intervalId);
     intervalId = null;
     i = 0;
@@ -114,7 +123,7 @@ function ora(){
     const ore = oraAttuale.getHours();
     const minuti = oraAttuale.getMinutes();
     const secondi = oraAttuale.getSeconds();
-    motore.innerHTML = `${ore}:${minuti}`;
+    motore.innerHTML = `<h1 class="boer">${ore}:${minuti}</h1>`;
     clearInterval(intervalId);
     intervalId = null;
     i = 0;
