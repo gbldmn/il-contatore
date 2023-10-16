@@ -4,8 +4,9 @@ let motore = document.querySelector('.counter');
 let i = 0;
 let intervalId;
 let resetId;
-let velocizzaId;
-let rallentaId;
+let rallentaId = true;
+let avviaId = true;
+let conteggioCrescente = true;
 
 function avvia(){
     
@@ -13,9 +14,6 @@ function avvia(){
         intervalId = setInterval(function() {
             i++; 
             motore.innerHTML = `<h1>${i}</h1>`;
-            if( i == 2){
-                motore.innerHTML = `<img src="img/images.jpg">`;
-            }
         }, 1000); 
     }
 }
@@ -23,30 +21,66 @@ function velocizza() {
     if (intervalId) {
         clearInterval(intervalId);
         intervalId = setInterval(function () {
-            i++;
+                        
             motore.innerHTML = `<h1>${i}</h1>`;
-        }, 500); 
+            if (rallentaId == false){
+            i--;
+            }else {
+            i++;
+            }
+        }, 500);
     }
 }
+
 
 function rallenta() {
     if (intervalId) {
         clearInterval(intervalId); 
         intervalId = setInterval(function () {
-            i++;
+            
             motore.innerHTML = `<h1>${i}</h1>`;
+            if (rallentaId == false){
+            i--;
+            }else {
+            i++;
+            }
+
         }, 2000); 
     }
 }
-function inverti() {
-    if (intervalId) {
-        clearInterval(intervalId); 
-        intervalId = setInterval(function () {
-            i--;
-            motore.innerHTML = `<h1>${i}</h1>`;
-        }, 1000); 
+// function inverti() {
+//     if (intervalId) {
+//         clearInterval(intervalId);
+//         intervalId = setInterval(function () {
+//             rallentaId = false
+//             if (conteggioCrescente){
+//             i--;
+//             conteggioCrescente = false;
+//             console.log(conteggioCrescente)
+//             }else if (conteggioCrescente == false) {
+//             i++;
+//             }
+//             motore.innerHTML = `<h1>${i}</h1>`;
+//         }, 1000);
+//     }
+// }
+function inverti(){
+    if (intervalId){
+        clearInterval(intervalId);
     }
+    intervalId = setInterval(function () {
+        rallentaId = false
+        if (conteggioCrescente) {
+            i--;
+        } else {
+            i++;
+            rallentaId = true
+        }
+        motore.innerHTML = `<h1>${i}</h1>`;
+    },1000);
+    conteggioCrescente = !conteggioCrescente;
 }
+
 
 
 function arresta(){
