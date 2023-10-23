@@ -1,6 +1,7 @@
 
 
 let motore = document.querySelector('.counter');
+let blocco = 0;
 let i = 0;
 let intervalId;
 let resetId;
@@ -8,24 +9,20 @@ let rallentaId = true;
 let avviaId = true;
 let conteggioCrescente = true;
 
+
 function avvia(){
     
     if (!intervalId) {
         intervalId = setInterval(function() {
             i++; 
-            aggiungiBlocchetto();
-            motore.innerHTML = `<div class="dd1 counter1">
+
+            motore.innerHTML = `<div>
                                     <h1 class="boer">${i}</h1>
-                                    <div class="blocchetto"></div>
                                 </div>`;
         }, 1000); 
     }
 }
-function aggiungiBlocchetto() {
-    const blocchetto = document.querySelector('.blocchetto');
-    const nuovoBlocchetto = blocchetto.cloneNode(true);
-    motore.appendChild(nuovoBlocchetto);
-}
+
 function velocizza() {
     if (intervalId) {
         clearInterval(intervalId);
@@ -57,22 +54,6 @@ function rallenta() {
         }, 2000); 
     }
 }
-// function inverti() {
-//     if (intervalId) {
-//         clearInterval(intervalId);
-//         intervalId = setInterval(function () {
-//             rallentaId = false
-//             if (conteggioCrescente){
-//             i--;
-//             conteggioCrescente = false;
-//             console.log(conteggioCrescente)
-//             }else if (conteggioCrescente == false) {
-//             i++;
-//             }
-//             motore.innerHTML = `<h1>${i}</h1>`;
-//         }, 1000);
-//     }
-// }
 function inverti(){
     if (intervalId){
         clearInterval(intervalId);
